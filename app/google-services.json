@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1080684940181",
+    "project_id": "testapi-mocom",
+    "storage_bucket": "testapi-mocom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080684940181:android:f8aa0cefc6b277e579449c",
+        "android_client_info": {
+          "package_name": "com.example.testapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080684940181-ue6nat2vsrn3mb7852f99cb52e4j8mc1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.testapi",
+            "certificate_hash": "a1f983a51b44d336a8e15bb82bf87f2c97be4944"
+          }
+        },
+        {
+          "client_id": "1080684940181-9rl6idprdsaoo0t2htrsekrrf1lk5m6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz7nt97aCGEkGcVPeS4TyrU15lsRpnH9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080684940181-9rl6idprdsaoo0t2htrsekrrf1lk5m6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
