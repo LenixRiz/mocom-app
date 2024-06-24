@@ -14,8 +14,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:text="Welcome To Mocom"
-        android:textSize="40dp"
-        android:fontFamily="sans-serif-condensed"
+        android:textSize="32dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp"
+        android:text="Sign In"
+        android:textSize="24dp"
+        android:fontFamily="@font/montserrat_bold"
         android:textColor="@color/black"/>
 
     <LinearLayout
@@ -27,7 +37,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
 
             <RelativeLayout
                 android:id="@+id/emailTil"
@@ -46,7 +57,7 @@
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/black"/>
+                    android:textColorHint="@color/gray"/>
 
             </RelativeLayout>
 
@@ -70,18 +81,51 @@
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/black"/>
+                    android:textColorHint="@color/gray"/>
 
-            </RelativeLayout>>
+                <TextView
+                    android:id="@+id/forgotPass"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/passwordEt"
+                    android:layout_marginTop="2dp"
+                    android:text="Forgot Password?" />
+
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/loginBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="130dp"
-                android:text="Login"
+                android:text="LOGIN"
                 android:background="@drawable/shape_edittext01"
                 android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/googleLoginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/loginBtn"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shape_edittext01"
+                android:drawableStart="@drawable/google_icon"
+                android:drawablePadding="10dp"
+                android:text="GOOGLE"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/signUpText"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/googleLoginBtn"
+                android:clickable="true"
+                android:text="New User? Sign Up" />
 
         </RelativeLayout>
 

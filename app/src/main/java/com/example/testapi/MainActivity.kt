@@ -10,12 +10,15 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapi.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var presenter: Presenter
     private lateinit var binding: ActivityMainBinding
     private var dataList: List<DataItem>? = null
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,16 @@ class MainActivity : AppCompatActivity() {
 
         presenter = Presenter(this)
         presenter.getData()
+
+        auth = FirebaseAuth.getInstance()
+
+        binding.logoutBtn.setOnClickListener {
+            auth.signOut()
+
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         binding.btnAdd.setOnClickListener {
             startActivity(Intent(applicationContext, UpdateAddActivity::class.java))

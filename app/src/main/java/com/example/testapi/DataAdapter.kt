@@ -3,6 +3,7 @@ package com.example.testapi
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapi.databinding.ItemDataBinding
@@ -42,7 +43,18 @@ class DataAdapter(val data: List<DataItem>?, private val click:onClickItem) :
                     binding.btnDelete.setOnClickListener {
                         val position = adapterPosition
                         if (position != RecyclerView.NO_POSITION) {
-                            click.delete(data?.get(position))
+                            // Show confirmation dialog
+                            AlertDialog.Builder(itemView.context)
+                                .setTitle("Confirm Delete")
+                                .setMessage("Are you sure you want to delete this item?")
+                                .setPositiveButton("Delete") { dialog, _ ->
+                                    click.delete(data?.get(position))
+                                    dialog.dismiss()
+                                }
+                                .setNegativeButton("Cancel"){ dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                .show()
                         }
                     }
 

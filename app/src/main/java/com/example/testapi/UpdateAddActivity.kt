@@ -3,10 +3,13 @@ package com.example.testapi
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testapi.databinding.ActivityUpdateAddBinding
 import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import com.squareup.picasso.Picasso
 
 @Suppress("SENSELESS_COMPARISON")
@@ -31,14 +34,19 @@ class UpdateAddActivity : AppCompatActivity(),CrudView {
 
         //Image
         val etImage: EditText = findViewById(R.id.etImage)
-        val imageUrl = etImage.text.toString()
-
         val ivComicImage: ImageView = findViewById(R.id.ivComicImage)
 
-        if (itemDataItem != null) {
-            val item = itemDataItem as DataItem?
-            Picasso.get().load(item?.comicImage).into(ivComicImage)
-        }
+        // Add a text change listener to etImage
+        etImage.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                // Load the image when the text changes
+                val imageUrl = s.toString()
+                Picasso.get().load(imageUrl).into(ivComicImage)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
 
         if (itemDataItem == null) {
             binding.btnAction.text = "Add"
@@ -58,12 +66,23 @@ class UpdateAddActivity : AppCompatActivity(),CrudView {
             binding.etImage.setText(item?.comicImage.toString())
             binding.etDescription.setText(item?.comicDescription.toString())
             binding.btnAction.setOnClickListener() {
-                presenter.updateData( item?.comicId ?: "",
-                    binding.etTitle.text.toString(),
-                    binding.etAuthor.text.toString(),
-                    binding.etImage.text.toString(),
-                    binding.etDescription.text.toString())
-                finish()
+                AlertDialog.Builder(this)
+                    .setTitle("Confirm Update")
+                    .setMessage("Are you sure you want to update this item?")
+                    .setPositiveButton("Update") { dialog, _ ->
+                        presenter.updateData(
+                            item?.comicId ?: "",binding.etTitle.text.toString(),
+                            binding.etAuthor.text.toString(),
+                            binding.etImage.text.toString(),
+                            binding.etDescription.text.toString()
+                        )
+                        finish()
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton("Cancel") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
             }
 
         }
