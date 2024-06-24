@@ -21,6 +21,11 @@ class UpdateAddActivity : AppCompatActivity(),CrudView {
         binding = ActivityUpdateAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //handle click back button
+        binding.backBtn.setOnClickListener {
+           onBackPressed()
+        }
+
         presenter = Presenter2(this)
         val itemDataItem = intent.getSerializableExtra("dataItem")
 
@@ -63,10 +68,10 @@ class UpdateAddActivity : AppCompatActivity(),CrudView {
 
         }
 
-        binding.btnBack.setOnClickListener {
-            startActivity(Intent(applicationContext, MainActivity::class.java))
-            finish()
-        }
+//        binding.btnBack.setOnClickListener {
+//            startActivity(Intent(applicationContext, MainActivity::class.java))
+//            finish()
+//        }
 
     }
 
